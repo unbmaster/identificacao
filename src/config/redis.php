@@ -11,14 +11,7 @@
  */
 return [
     'scheme'   => 'tcp',
-    'host'     => '192.168.0.138',
-    'password' => '12345',
+    'host'     => 'redis',
+    'password' => '',
     'port'     => 6379
 ];
-
-//return [
-//    'scheme'   => 'tcp',
-//    'host'     => 'redis',
-//    'password' => '12345',
-//    'port'     => 6379
-//];
