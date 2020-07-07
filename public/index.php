@@ -24,7 +24,7 @@ $app->add(new Core\CorrelationIdMiddleware());
 
 $app->any('/login', 'Controller\IdentificacaoController:login');
 
-$app->any('/', 'Controller\HomeController:info');
+$app->any('/identificacao', 'Controller\HomeController:api');
 
 $app->run();
 

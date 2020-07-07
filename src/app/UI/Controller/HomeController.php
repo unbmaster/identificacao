@@ -14,6 +14,7 @@ use Slim\Factory\AppFactory;
 use Psr\Http\Message\ResponseInterface;
 use Core\{IP, Env};
 
+
 /**
  * HomeController class
  *
@@ -23,28 +24,21 @@ use Core\{IP, Env};
  */
 class HomeController
 {
-    public static function info($request, $response)
+    public static function api($request, $response)
     {
         $env = new Env();
-        $container_env = '';
-        $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-        $port = parse_url($url, PHP_URL_PORT);
-        $port_env = substr($port,0,3);
-        switch ($port_env) {
-            case 443 : $container_env = 'Produção'; break;
-            case 444 : $container_env = 'Desenvolvimento'; break;
-        }
+
+        $container = str_replace("\n", "", shell_exec('hostname'));
         $data = [
-            'service' => [
-                'name' => $env('service'),
-                'build' => $env('build'),
-                'container' => $env('container'),
-                'port' => $port,
-                'env' => $container_env,
-            ],
+            'service-name'  => $env('service'),
+            'build-number'  => $env('build'),
+            'image-name'    => $env('image'),
+            'container-id'  => $container,
+            'environment'   => $env('envwork'),
             'ip-server' => $_SERVER['SERVER_ADDR'],
             'ip-client' => IP::get()
         ];
+
         $payload = json_encode($data);
         $response->getBody()->write($payload);
         return $response->withHeader('Content-Type', 'application/json');
