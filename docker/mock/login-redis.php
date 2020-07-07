@@ -18,7 +18,7 @@ $redis = new Redis();
 
 $redis->delAll("*");
 
-$csv = file_get_contents('login_redis.csv');
+$csv = file_get_contents('/var/www/docker/mock/login_redis.csv');
 $dados = explode("\r\n", $csv);
 
 for($i = 0; $i < sizeof($dados)-1; $i++) {
