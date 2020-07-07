@@ -12,6 +12,6 @@
 return [
     'scheme'   => 'tcp',
     'host'     => 'redis',
-    'password' => '',
+    'password' => '12345',
     'port'     => 6379
 ];
