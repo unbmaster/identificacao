@@ -20,9 +20,11 @@ use Slim\Factory\AppFactory;
 
 $app = AppFactory::create();
 
-$app->add(new Core\CorrelationIdMiddleware());
+$auth = new Core\IdentificacaoMiddleware;
 
-$app->any('/login', 'Controller\IdentificacaoController:login');
+$app->add(new Core\CorrelationIdMiddleware);
+
+$app->any('/identificacao/login', 'Controller\IdentificacaoController:login');
 
 $app->any('/identificacao', 'Controller\HomeController:api');
 
