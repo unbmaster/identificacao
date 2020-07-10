@@ -22,9 +22,9 @@ $app = AppFactory::create();
 
 $app->add(new Core\CorrelationIdMiddleware);
 
-$app->any('/identificacao/login', 'Controller\IdentificacaoController:login');
+$app->any('/v1/identificacao/login', 'Controller\IdentificacaoController:login');
 
-$app->any('/identificacao', 'Controller\HomeController');
+$app->any('/v1/identificacao', 'Controller\HomeController');
 
 $app->run();
 
