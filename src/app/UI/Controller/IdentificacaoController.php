@@ -26,6 +26,9 @@ class IdentificacaoController
     {
 
         $input = $request->getParsedBody();
+        if (!$input) {
+            $input = $request->getQueryParams();
+        }
 
         if(!$input) {
             return $response->withStatus(401);

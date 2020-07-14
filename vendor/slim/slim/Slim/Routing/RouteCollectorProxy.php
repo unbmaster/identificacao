@@ -121,7 +121,6 @@ class RouteCollectorProxy implements RouteCollectorProxyInterface
      */
     public function get(string $pattern, $callable): RouteInterface
     {
-        if (preg_match('/\/dev\//', $_SERVER['REQUEST_URI'])) {$pattern= '/dev' . $pattern;}
         return $this->map(['GET'], $pattern, $callable);
     }
 
@@ -130,7 +129,6 @@ class RouteCollectorProxy implements RouteCollectorProxyInterface
      */
     public function post(string $pattern, $callable): RouteInterface
     {
-        if (preg_match('/\/dev\//', $_SERVER['REQUEST_URI'])) {$pattern= '/dev' . $pattern;}
         return $this->map(['POST'], $pattern, $callable);
     }
 
@@ -139,7 +137,6 @@ class RouteCollectorProxy implements RouteCollectorProxyInterface
      */
     public function put(string $pattern, $callable): RouteInterface
     {
-        if (preg_match('/\/dev\//', $_SERVER['REQUEST_URI'])) {$pattern= '/dev' . $pattern;}
         return $this->map(['PUT'], $pattern, $callable);
     }
 
@@ -172,7 +169,6 @@ class RouteCollectorProxy implements RouteCollectorProxyInterface
      */
     public function any(string $pattern, $callable): RouteInterface
     {
-        if (preg_match('/\/dev\//', $_SERVER['REQUEST_URI'])) {$pattern= '/dev' . $pattern;}
         return $this->map(['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'], $pattern, $callable);
     }
 
