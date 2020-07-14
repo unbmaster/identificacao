@@ -28,13 +28,16 @@ class HomeController
     {
         $env = new Env();
 
+        $cmd = shell_exec('echo $ENVWORK');
+
         $container = str_replace("\n", "", shell_exec('hostname'));
         $data = [
             'service-name'  => $env('service'),
             'build-number'  => $env('build'),
             'image-name'    => $env('image'),
             'container-id'  => $container,
-            'environment'   => $env('envwork'),
+            'environment'   => $ENVWORK,
+            'environment2'   => $cmd,
             'ip-server' => $_SERVER['SERVER_ADDR'],
             'ip-client' => IP::get()
         ];
