@@ -12,8 +12,6 @@
  * @version 0.1.0
  */
 
-ini_set('display_errors', true);
-
 require __DIR__ . '/../vendor/autoload.php';
 
 use Slim\Factory\AppFactory;
@@ -27,5 +25,3 @@ $app->any('/v1/identificacao/login', 'Controller\IdentificacaoController:login')
 $app->any('/v1/identificacao', 'Controller\HomeController');
 
 $app->run();
-
-

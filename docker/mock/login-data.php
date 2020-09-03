@@ -19,7 +19,7 @@ $faker = \Faker\Factory::create('pt_BR');
 
 # Gera de posto e graduação
 $rank = function () {
-    $i = rand (10 , 20);
+    $i = random_int (10 , 20);
     $a = [
         10 => '3º Sgt',
         11 => '2º Sgt',
@@ -38,7 +38,7 @@ $rank = function () {
 
 # Gera nome de guerra
 $name = function () use ($faker) {
-    $i = rand (1 , 2);
+    $i = random_int (1 , 2);
     $a = [
         1 => preg_replace('/\w*\.\s/', '', $faker->firstName()),
         2 => preg_replace('/\w*\.\s/', '', $faker->lastName())
@@ -72,8 +72,6 @@ $csv_login .= "1234567890,12345678\r\n";
 
 # Cria CSV para Redis
 $preload_redis = "1234567890 " . json_encode($data) . "\r\n";
-#$preload_redis = "SET 1234567890 " . json_encode($data) . "\r\n";
-#$preload_redis = "*3\r\n$5\r\nLPUSH\r\n$4\r\n1234567890\r\n$3\r\n" . json_encode($data) . "\r\n";
 
 # Cria N usuários no Redis
 foreach(range(1, TOTAL_USUARIOS-1) as $index) {
@@ -91,8 +89,6 @@ foreach(range(1, TOTAL_USUARIOS-1) as $index) {
 
     $csv_login .= $militarId . "," . $password ."\r\n";
     $preload_redis .= "{$militarId} " . json_encode($data) . "\r\n";
-    #$preload_redis .= "lpush {$militarId} " . json_encode($data) . "\r\n";
-    #$preload_redis .= "*3\r\n$5\r\nLPUSH\r\n$4\r\n{$militarId}\r\n$3\r\n" . json_encode($data) . "\r\n";
 }
 
 # Grava CSV

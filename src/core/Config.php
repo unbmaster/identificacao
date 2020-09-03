@@ -33,12 +33,16 @@ class Config
         $filepath = str_replace('core', '',__DIR__)  . 'config/'. $filename . '.php';
         if (file_exists($filepath)) {
             $data = require $filepath;
-            $info = '';
-            for ($i = 1; $i < count($node); $i++) {
-                $info .= "['$node[$i]']";
+            $result = '';
+            if (count($node)-1 == 3) {
+                $result = $data[$node[1]][$node[2]][$node[3]];
             }
-            $cmd = '$data' . $info . ';';
-            eval("\$result=$cmd;");
+            else if (count($node)-1 == 2) {
+                $result = $data[$node[1]][$node[2]];
+            }
+            else if (count($node)-1 == 1) {
+                $result = $data[$node[1]];
+            }
         } else {
             return "File {$node[0]} not found in config folder.";
         }

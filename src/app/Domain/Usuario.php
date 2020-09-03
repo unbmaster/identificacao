@@ -40,7 +40,7 @@ class Usuario
         $this->nome = $nome;
         $this->senha = $senha;
         $this->email = $email;
-        $this->criadoEm = date('Y-m-d H:i:s');
+        $this->criadoEm = $criadoEm; // date('Y-m-d H:i:s');
         $this->permissoes = $permissoes;
     }
 

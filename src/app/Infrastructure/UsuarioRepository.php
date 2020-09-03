@@ -26,8 +26,7 @@ class UsuarioRepository implements UsuarioRepositoryInterface
      */
     public function get(MilitarId $militarId) {
         $redis  = new Redis();
-        $result = $redis->get($militarId);
-        return $result;
+        return $redis->get($militarId);
     }
 
     /**
@@ -37,8 +36,7 @@ class UsuarioRepository implements UsuarioRepositoryInterface
      */
     public function set(MilitarId $militarId, Usuario $usuario) {
         $redis = new Redis();
-        $result = $redis->set($militarId, $usuario);
-        return $result;
+        return $redis->set($militarId, $usuario);
     }
 
     /**
@@ -47,7 +45,6 @@ class UsuarioRepository implements UsuarioRepositoryInterface
      */
     public function del(MilitarId $militarId) {
         $redis  = new Redis();
-        $result = $redis->del($militarId);
-        return $result;
+        return $redis->del($militarId);
     }
 }

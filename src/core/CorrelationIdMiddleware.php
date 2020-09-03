@@ -28,7 +28,6 @@ class CorrelationIdMiddleware
         if (empty($correlationId)) {
             $correlationId = Random::UUID();
         }
-        $response = $response->withHeader('X-Correlation-Id', $correlationId);
-        return $response;
+        return $response->withHeader('X-Correlation-Id', $correlationId);
     }
 }

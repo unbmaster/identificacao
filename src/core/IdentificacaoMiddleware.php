@@ -26,11 +26,14 @@ class IdentificacaoMiddleware
         $response = $handler->handle($request);
         $token = JWT::getTokenFromHeader($request);
 
+        if(!$token && isset($_REQUEST['token'])) {
+            $token = filter_var($_REQUEST['token'], FILTER_SANITIZE_STRING);
+        }
+
         if ($token && JWT::isValidToken($token) && JWT::isUserRole($token)) {
             $response = $response->withHeader('Authorization',  "Bearer $token");
         }
         else {
-            $uri = $request->getUri();
             $response = new Response();
             return $response->withStatus(401); # 401 Unauthorized
         }

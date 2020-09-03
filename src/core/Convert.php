@@ -17,28 +17,5 @@ namespace Core;
  */
 class Convert
 {
-    /**
-     * objectToArray Method
-     *
-     * Converte Objeto em Array
-     * Fonte: https://stackoverflow.com/questions/4345554/convert-a-php-object-to-an-associative-array
-     * @param object $obj
-     * @param bool $deep
-     * @return array
-     * @throws \ReflectionException
-     */
-    public static function objectToArray(object $obj, bool $deep = true)
-    {
-        $reflectionClass = new \ReflectionClass(get_class($obj));
-        $array = [];
-        foreach ($reflectionClass->getProperties() as $property) {
-            $property->setAccessible(true);
-            $val = $property->getValue($obj);
-            if (true === $deep && is_object($val)) {
-                $val = self::objectToArray($val);
-            }
-            $array[$property->getName()] = $val;
-            $property->setAccessible(false);
-        }
-        return $array;
-    }}
+
+}

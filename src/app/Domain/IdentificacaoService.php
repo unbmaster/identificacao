@@ -112,7 +112,6 @@ class IdentificacaoService
             'email' => (string)$usuario->getEmail(),
             'roles' => (array)$usuario->getPermissoes()
         ];
-        $token = \Core\JWT::getToken($payload);
-        return $token;
+        return \Core\JWT::getToken($payload);
     }
 }
